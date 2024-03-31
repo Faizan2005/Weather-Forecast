@@ -113,9 +113,9 @@ There are 5 functions in total in main.cpp. Their brief explanation is as follow
 
 ## How I completed the project (my thought process and issues faced during the journey): 
 
-• Initially I searched about "Data Scraping" and how does a weather software works. There were various other terms I wasn't familiar about like API, JSON, Parsing and many other. So, the first step was to know about these, watched various youtube videos, visited various websites. I planned to do it in Ubuntu (Linux).
+• Initially I searched about "Data Scraping" and how does a weather software works. There were various other terms I wasn't familiar about like API, JSON, Parsing and many other. So, the first step was to know about these, watched various youtube videos, visited various websites. I planned to do it in Ubuntu (Linux) OS and code in C++ language. I'm somewhat familiar with C++ and still learning it, so decided to go with C++.
 
-• I got familiar about how this weather software will work, wrote down a brief process about the execution of the code, about how HTTP request will be sent, what will be the role of API and how parsing will be done. Then I finalized that I will be using API to make this software.  I planned to do it in 3 phases.
+• I got familiar about how this weather software will work, wrote down a brief process about the execution of the code, about how HTTP request will be sent, what will be the role of API and how parsing will be done. After searching, I decided to use cURL library of C++ to send HTTP Request as it was being most commonly used in C++ and the implementation steps were said to be simple. For parsing the recieved JSON data I decided to use RapidJSON library of C++, the reason of using RapidJSON was that it could extract JSON data as well as display readable data to users, it could also handle large amount of data, I also found the syntax of the commands to be fairly easy to memorise and use. Then I finalized that I will be using API to make this software, it just required sending HTTP request via url and parsing it.  I planned to do it in 3 phases. 
  1. writing the entire code and only using name of location as user input.
  2. also including coordinates as user input to run the code
  3. finally doing error handling in the code, like if user provides wrong location or coordinates, an error message will be shown and 
@@ -125,7 +125,7 @@ There are 5 functions in total in main.cpp. Their brief explanation is as follow
 
 • Firstly, I wrote main() function. Entered basic commands like asking user for inputs, and calling other functions. Then I wrote HTTPRequest() function, I found it very difficult to write the code of this function as there were various curl library commands used, so I watched youtube videos and other resources to know the correct format of a curl based HTTP request function. Then I wrote WeatherData() function which was to be used in parsing the JSON response we got from HTTPRequest(). I required rapidjson library, so I installed it. The syntax of rapidjson library to extract JSON data and convert to readable form wasn't that difficult.
 
-• When all functions were written, and I had to compile the code, errors appeared like "fatal error: curl/curl.h: No such file or directory"   . I had to search to find the solutions and finally after changing some file path and correctly adding "preprocessor" commands, it started working.
+• When all functions were written, and I had to compile the code, errors appeared like "fatal error: curl/curl.h: No such file or directory" . I had to search to find the solutions and finally after changing some file path and correctly adding "preprocessor" commands, it started working.
 
 • While running, there was again an issue coming, 'minimum' and 'maximum' temperature were coming same, it was because of the feature this API service was providing, so I changed the API service to "https://www.weatherapi.com/", they had distinct min-max temperatures and other data as well like UV, Time zone etc.
 
