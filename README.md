@@ -42,7 +42,7 @@ To verify installation
 Now, since cURL is installed in the system, download .zip file of the project from github repository.  Extract the folder.
 Navigate to the main directory of the project and open terminal in that directory.
 
-![image](https://github.com/Faizan2005/Weather-Forecast/assets/146985659/03dbb86e-90de-49ec-88d0-793c2a36580f)
+![Screenshot from 2024-03-31 23-36-54](https://github.com/Faizan2005/Weather-Forecast/assets/146985659/d45b7605-d863-47a2-933a-c5e58244097e)
 
 To create the executable file enter the following command.
 ```
@@ -54,6 +54,8 @@ A new file will be created in 'bin' folder which we will be executing to run the
 ```
 This will run the software and now to use it, enter 'l' or 'c' based on what would you like to enter as an user input (location or coordinates).
 Then after entering location name or coordinates, weather details will be displayed.
+
+![Screenshot from 2024-03-31 23-37-45](https://github.com/Faizan2005/Weather-Forecast/assets/146985659/cb77f0ff-815d-4000-befe-92601f4ace1e)
 
 Error Handling : Incase any error occurred due to invalid user input, user will be asked to re-enter the correct input.
 
