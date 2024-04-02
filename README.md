@@ -45,7 +45,7 @@ g++ -o bin/weather src/main.cpp -lcurl
 ./bin/weather
 ```
 This will run the software and now to use it, enter 'l' or 'c' based on what would you like to enter as an user input (location or coordinates). Then after entering location name or coordinates, weather details will be displayed.
-![Screenshot from 2024-03-31 23-37-45](https://github.com/Faizan2005/Weather-Forecast/assets/146985659/cb77f0ff-815d-4000-befe-92601f4ace1e)
+![image](https://github.com/Faizan2005/Weather-Forecast/assets/146985659/3350a85b-ed30-49f7-9eca-4389f754022c)
 
 ### For Windows
 
