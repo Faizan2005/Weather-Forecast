@@ -8,6 +8,15 @@ using namespace rapidjson;
 
 const string API_Key = "5ba9593f80c849a0b3403917242603"; // Declaring API Key as a constant
 
+// ANSI escape codes for colors
+const string cyan = "\033[1;36m";
+const string yellow = "\033[1;33m";
+const string green = "\033[1;32m";
+const string red = "\033[1;31m";
+const string reset = "\033[0m";
+const string orange = "\033[38;5;208m";
+const string blue = "\033[38;5;27m";  
+
 // Callback function to receive data from HTTP request
 size_t write_callback(char *ptr, size_t size, size_t nmemb, string *data)
 {
@@ -39,7 +48,7 @@ string HTTPRequest(const string &url)
         // Check for errors
         if (res != CURLE_OK)
         {
-            cerr << "Failed to send HTTP request: " << curl_easy_strerror(res) << endl;
+            cerr << red << "Failed to send HTTP request: " << curl_easy_strerror(res) << reset << endl;
         }
 
         // Check if JSON data is parsable or not (used to determine if location/coordinates entered are correct or not)
@@ -55,7 +64,7 @@ string HTTPRequest(const string &url)
     else
     {
         // Error in initialization of libcurl
-        cerr << "Failed to initialize libcurl." << endl;
+        cerr << red << "Failed to initialize libcurl." << reset << endl;
     }
     return response_data;
 }
@@ -69,7 +78,7 @@ void WeatherData(const string &httprequest)
 
     if (doc.HasParseError()) // Checking parsing error
     {
-        cerr << "Error parsing JSON data: " << doc.GetParseError() << endl;
+        cerr << red << "Error parsing JSON data: " << doc.GetParseError() << reset << endl;
         return;
     }
 
@@ -97,32 +106,32 @@ void WeatherData(const string &httprequest)
     // Display weather information
     for (i = 0; i <= 101; i++)
     {
-        cout << "-";
+        cout << cyan << "-" << reset;
         if (i == 101)
-            cout << "-" << endl;
+            cout << cyan << "-" << reset << endl;
     }
-    cout << "Location: " << name << endl;
-    cout << "Coordinates - Latitude: " << coord_lat << endl;
-    cout << "Coordinates - Longitude: " << coord_lon << endl;
-    cout << "Timezone: "<< timezone << endl;
+    cout << orange << "Location: " << name << reset << endl;
+    cout << blue << "Coordinates - Latitude: " << coord_lat << reset << endl;
+    cout << blue << "Coordinates - Longitude: " << coord_lon << reset << endl;
+    cout << orange << "Timezone: "<< timezone << reset << endl;
     for (i = 0; i <= 101; i++)
     {
-        cout << "-";
+        cout << cyan << "-" << reset;
         if (i == 101)
-            cout << "-" << endl;
+            cout << cyan << "-" << reset << endl;
     }
-    cout << "Weather Description: " << weatherDescription << endl;
-    cout << "Current Temperature: " << currentTemp << "°C" << endl;
-    cout << "Feels Like: " << feelslike << "°C" << endl;
-    cout << "Minimum Temperature: " << minTemp << "°C" << endl;
-    cout << "Maximum Temperature: " << maxTemp << "°C" << endl;
-    cout << "Humidity: " << humidity << "%" << endl;
-    cout << "UV: " << uv << endl;
+    cout << blue << "Weather Description: " << weatherDescription << reset << endl;
+    cout << orange << "Current Temperature: " << currentTemp << "°C" << reset << endl;
+    cout << blue << "Feels Like: " << feelslike << "°C" << reset << endl;
+    cout << orange << "Minimum Temperature: " << minTemp << "°C" << reset << endl;
+    cout << blue << "Maximum Temperature: " << maxTemp << "°C" << reset << endl;
+    cout << orange << "Humidity: " << humidity << "%" << reset << endl;
+    cout << blue << "UV: " << uv << reset << endl;
     for (i = 0; i <= 101; i++)
     {
-        cout << "-";
+        cout << cyan << "-" << reset;
         if (i == 101)
-            cout << "-" << endl;
+            cout << cyan << "-" << reset << endl;
     }
 }
 
@@ -132,31 +141,31 @@ string UserInput()
     int i;
     string choice, location;
 
-    cout << "What would you like to enter, location or coordinates? (enter 'l' for location and 'c' for coordinates): "; // Asking to enter either location or coordinates
+    cout << green << "What would you like to enter, location or coordinates? (enter 'l' for location and 'c' for coordinates): " << reset; // Asking to enter either location or coordinates
     cin >> choice;
     for (i = 0; i <= 101; i++)
     {
-        cout << "-";
+        cout << cyan << "-" << reset;
         if (i == 101)
-            cout << "-" << endl;
+            cout << cyan << "-" << reset << endl;
     }
 
     if (choice == "l" || choice == "c")
     {
         if (choice == "l")
         {
-            cout << "Please enter location: ";
+            cout << green << "Please enter location: " << reset;
             cin >> location;
         }
         else if (choice == "c")
         {
-            cout << "Please enter coordinates (input format = latitude,longitude):";
+            cout << green << "Please enter coordinates (input format = latitude,longitude):" << reset;
             cin >> location;
         }
     }
     else
     {
-        cout << "*** invalid input - try again ***" << endl;
+        cout << red << "*** invalid input - try again ***" << reset << endl;
         location = UserInput(); // Function will be recalled incase user input is invalid
     }
 
@@ -171,21 +180,21 @@ int main()
     // Welcome message
     for (i = 0; i <= 101; i++)
     {
-        cout << "=";
+        cout << cyan << "=" << reset;
         if (i == 101)
-            cout << "=" << endl;
+            cout << cyan << "=" << reset << endl;
     }
     for (i = 0; i <= 32; i++)
     {
         cout << " ";
         if (i == 32)
-            cout << "Welcome to Weather Forecast Application" << endl;
+            cout << yellow << "Welcome to Weather Forecast Application" << reset << endl;
     }
     for (i = 0; i <= 101; i++)
     {
-        cout << "=";
+        cout << cyan << "=" << reset;
         if (i == 101)
-            cout << "=" << endl;
+            cout << cyan << "=" << reset << endl;
     }
 
     // Calling function for user input
